@@ -1,4 +1,4 @@
-class Problem9 {
+class Problem10 {
 
   private static final int LIMIT = 2000000;
 
