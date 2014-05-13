@@ -5,7 +5,7 @@ using System.Numerics;
 
 public class Problem14 
 {
-  private const string inputFilePath = "Problem14Input.txt"; 
+  private const string inputFilePath = "Problem13Input.txt"; 
  
   public static void Main() 
   {
