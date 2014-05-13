@@ -2,7 +2,7 @@ using System;
 
 public class Problem15
 {
-  private const int TARGET = 20;
+  private const int TARGET = 10;
 
   public static void Main()
   {
