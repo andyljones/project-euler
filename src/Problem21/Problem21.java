@@ -1,3 +1,8 @@
+package Problem21;
+
+import java.util.concurrent.*;
+import java.util.*;
+
 // Sum of all amicable numbers
 // sumOfAmicables(int limit)
 // - For 1 through limit, check if i is an amicable number
@@ -18,31 +23,37 @@
 
 public class Problem21
 {
-  public static void main(final String[] args) {
-    final int limit = Integer.parseInt(args[0]);
-    System.out.println("hi");
-    System.out.println(sumOfAmicables(limit));
-  }
+  private static final int NO_OF_CORES = Runtime.getRuntime().availableProcessors();
 
-  private static int sumOfAmicables(final int limit) {
-    int sum = 0;
+  public static int sumOfAmicables(final int limit) {
+    System.err.format("Using %d threads\n", NO_OF_CORES);
+    final ExecutorService execService = Executors.newFixedThreadPool(NO_OF_CORES);
+
+    Collection<Callable<Integer>> tasks = new ArrayList<>();
     for (int i = 1; i < limit; i++) {
-      if (isAmicableNumber(i)) {
-        sum = sum + i;
-      }
+      final Integer n = i;
+      tasks.add(() -> isAmicableNumber(n)? n : 0);
     }
 
+    int sum = 0;
+    try {
+        List<Future<Integer>> results = execService.invokeAll(tasks);
+        for (Future<Integer> result : results) {
+            sum = sum + result.get();
+        }
+    } catch (InterruptedException | ExecutionException e) {
+        System.err.format("One or more tasks failed to return a result. Stack trace follows:\n");
+        e.printStackTrace();
+    } finally {
+        execService.shutdown();
+    }
+    
     return sum;
   }
 
   private static boolean isAmicableNumber(final int n) {
-    System.out.println("Number " + n);
     final int sumOfNsDivisors = sumOfDivisors(n);
-    System.out.println("Sum of divisors " + sumOfNsDivisors);
     final int sumOfDivisorsOfSumOfDivisors = sumOfDivisors(sumOfNsDivisors);
-    System.out.println("Sum of divisors of sum of divisors " + sumOfDivisorsOfSumOfDivisors);
-
-    System.out.println("");
 
     return sumOfDivisorsOfSumOfDivisors == n && sumOfNsDivisors != n;
   }
@@ -50,14 +61,14 @@ public class Problem21
   private static int sumOfDivisors(final int n) {
     int sum = 1;
     for (int i = 2; i < Math.sqrt(n); i++) {
-      if (n/i * i == n) {
+      if (i % n == 0) {
         sum = sum + i;
         sum = sum + n/i;
       }
     }
 
     final int sqrtOfN = (int)Math.sqrt(n);
-    if (sqrtOfN*sqrtOfN == n && n != 1) {
+    if (sqrtOfN % n == 0 && n != 1) {
       sum = sum + sqrtOfN;
     }
 
