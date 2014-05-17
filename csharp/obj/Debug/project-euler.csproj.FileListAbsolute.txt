@@ -1,0 +1,9 @@
+D:\Code\project-euler\csharp\project-euler\bin\Debug\project-euler.exe.config
+D:\Code\project-euler\csharp\bin\Debug\project-euler.exe.config
+D:\Code\project-euler\csharp\obj\Debug\project-euler.csprojResolveAssemblyReference.cache
+D:\Code\project-euler\csharp\bin\Debug\project-euler.exe
+D:\Code\project-euler\csharp\bin\Debug\project-euler.pdb
+D:\Code\project-euler\csharp\bin\Debug\nunit.framework.dll
+D:\Code\project-euler\csharp\bin\Debug\nunit.framework.xml
+D:\Code\project-euler\csharp\obj\Debug\project-euler.exe
+D:\Code\project-euler\csharp\obj\Debug\project-euler.pdb
