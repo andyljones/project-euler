@@ -17,9 +17,9 @@ class Problem26Tests
         Assert.AreEqual(expected, actual);
     }
 
-    [Test]
-    public void LongestCycleLength_Under1000_IsCorrect()
-    {
-        Console.WriteLine(Problem26.LongestCycleLength(1000));
-    }
+    //[Test]
+    //public void LongestCycleLength_Under1000_IsCorrect()
+    //{
+    //    Console.WriteLine(Problem26.LongestCycleLength(1000));
+    //}
 }

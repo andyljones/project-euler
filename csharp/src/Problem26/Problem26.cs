@@ -23,7 +23,6 @@ static class Problem26
     private static int LengthOfCycle(int d)
     {
         int i = 1;
-        Debug.WriteLine("Trying " + d);
         while (true)
         {
             for (int k = 1; k <= i; k++)
