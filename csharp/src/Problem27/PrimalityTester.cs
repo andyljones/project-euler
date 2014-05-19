@@ -18,22 +18,32 @@ class PrimalityTester
 
     private void extendSieve(int upperBound)
     {
-        BitArray sieve = new BitArray(upperBound + 1);
-        sieve[0] = true;
-        sieve[1] = true;
+        BitArray sieve = new BitArray(upperBound + 1, true);
+        sieve[0] = false;
+        sieve[1] = false;
 
-        for (int i = 2; i < sieve.Length; i++)
+        for (int i = 0; i < Math.Sqrt(sieve.Length); i++)
         {
-            if (!sieve[i])
+            if (sieve[i])
             {
-                for (int j = 2*i; j < Math.Sqrt(upperBound); j = j + i)
+                for (int j = 2*i; j < sieve.Length; j = j + i)
                 {
-                    sieve[j] = true;
+                    sieve[j] = false;
                 }
             }
         }
 
-        primes = (new List<Boolean>(sieve))
+        ISet<int> newPrimes = new HashSet<int>();
+        for (int i = 0; i < sieve.Length; i++)
+        {
+            if (sieve[i])
+            {
+                newPrimes.Add(i);
+            }
+        }
+
+        primes = newPrimes;
+        largestNumberTested = upperBound;
     }
 
 
