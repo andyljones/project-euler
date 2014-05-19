@@ -7,7 +7,7 @@ class Problem27Tests
     [Test]
     public void CoeffProd_ShouldFindEulersQuadratic_AndReturn41()
     {
-        int expected = 41;
+        int expected = -41;
         int actual = Problem27.CoefficientProductWithLongestPrimeSequence(2, 42);
 
         Assert.AreEqual(expected, actual);
@@ -16,7 +16,7 @@ class Problem27Tests
     [Test]
     public void CoeffProd_ShouldFindEightyPrimeQuadratic_AndReturn126479()
     {
-        int expected = 126479;
+        int expected = -126479;
         int actual = Problem27.CoefficientProductWithLongestPrimeSequence(80, 1602);
 
         Assert.AreEqual(expected, actual);

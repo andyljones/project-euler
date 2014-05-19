@@ -63,6 +63,8 @@
     <Compile Include="src\Problem27\PrimalityTesterTests.cs" />
     <Compile Include="src\Problem27\Problem27.cs" />
     <Compile Include="src\Problem27\Problem27Tests.cs" />
+    <Compile Include="src\Problem28\Problem28.cs" />
+    <Compile Include="src\Problem28\Problem28Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
